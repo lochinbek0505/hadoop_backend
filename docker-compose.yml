@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  hadoop-sim-backend:
+    build: .
+    container_name: hadoop-sim-backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"   # faqat local, tashqariga chiqmaydi
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xms128m -Xmx384m -XX:+UseSerialGC
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
