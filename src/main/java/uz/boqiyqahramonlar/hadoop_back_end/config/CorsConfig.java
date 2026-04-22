@@ -14,14 +14,13 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-
         config.setAllowedOriginPatterns(List.of(
+                "https://testinnovation-4211c.web.app",
+                "https://*.web.app",
+                "https://*.firebaseapp.com",
                 "http://localhost:*",
-                "https://localhost:*",
-                "http://127.0.0.1:*",
-                "https://127.0.0.1:*"
+                "https://localhost:*"
         ));
-
         config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("*"));
